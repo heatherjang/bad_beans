@@ -1,0 +1,860 @@
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:28:51 +0000
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__360222487__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.1ms)
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (4.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMovies (20150303004040)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "director" varchar(255), "runtime_in_minutes" integer, "description" text, "poster_image_url" varchar(255), "release_date" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150303004040"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20150303022236)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150303022236"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddNameFieldsToUsers (20150303022702)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (4.4ms)[0m  [1mALTER TABLE "users" ADD "firstname" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "lastname" varchar(255)
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150303022702"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+Migrating to CreateReviews (20150303033647)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "movie_id" integer, "text" text, "rating_out_of_ten" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150303033647"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+Migrating to AddPosterImageToMovies (20150303192356)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (3.4ms)[0m  ALTER TABLE "movies" ADD "poster_img" varchar(255)
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150303192356"]]
+  [1m[35m (2.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:29:17 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::UsersController#index as HTML
+  Rendered admin/users/index.html.erb within layouts/application (0.4ms)
+  [1m[35mUser Load (7.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (87.4ms)
+Completed 500 Internal Server Error in 1411ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with id=1):
+  app/controllers/application_controller.rb:16:in `current_user'
+  app/views/layouts/_footer.html.erb:3:in `_app_views_layouts__footer_html_erb___217892423__634669328'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__894621171__627364708'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/" for 10.0.2.2 at 2015-03-03 22:31:02 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (2.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (3.9ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (23.4ms)
+Completed 500 Internal Server Error in 230ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with id=1):
+  app/controllers/application_controller.rb:16:in `current_user'
+  app/views/layouts/_footer.html.erb:3:in `_app_views_layouts__footer_html_erb___217892423__634669328'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__894621171__627364708'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (1.6ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 156ms (Views: 154.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:33:59 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:00 +0000
+
+
+Started GET "/sessions/new" for 10.0.2.2 at 2015-03-03 22:34:07 +0000
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 167ms (Views: 166.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 10.0.2.2 at 2015-03-03 22:34:13 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cWpG55MWSoX/19Wf1dHYUWJjz/9z1IuLdO00z1Tfnxs=", "email"=>"derek@zoolander.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'derek@zoolander.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 166ms (Views: 156.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:13 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:13 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:13 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:13 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:14 +0000
+
+
+Started GET "/users/new" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (57.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 220ms (Views: 218.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:18 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:19 +0000
+
+
+Started POST "/users" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cWpG55MWSoX/19Wf1dHYUWJjz/9z1IuLdO00z1Tfnxs=", "user"=>{"email"=>"derek@zoolander.com", "firstname"=>"Derek", "lastname"=>"Zoolander", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (12.6ms)[0m  INSERT INTO "users" ("created_at", "email", "firstname", "lastname", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 03 Mar 2015 22:34:34 UTC +00:00], ["email", "derek@zoolander.com"], ["firstname", "Derek"], ["lastname", "Zoolander"], ["password_digest", "$2a$10$rQpXy6oVoha/xa6cqIEwpO4dNAnoOzAvFd7mFpXh00KudjwrrjXpS"], ["updated_at", Tue, 03 Mar 2015 22:34:34 UTC +00:00]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/movies
+Completed 302 Found in 100ms (ActiveRecord: 15.9ms)
+
+
+Started GET "/movies" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (1.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_footer.html.erb (3.1ms)
+Completed 200 OK in 162ms (Views: 158.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:34 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:35 +0000
+
+
+Started GET "/movies/new" for 10.0.2.2 at 2015-03-03 22:34:42 +0000
+Processing by MoviesController#new as HTML
+  Rendered movies/_form.html.erb (50.2ms)
+  Rendered movies/new.html.erb within layouts/application (80.5ms)
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (2.7ms)
+Completed 200 OK in 247ms (Views: 243.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/movies" for 10.0.2.2 at 2015-03-03 22:34:45 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (1.3ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (2.4ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (2.5ms)
+Completed 200 OK in 154ms (Views: 151.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:45 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:45 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:34:46 +0000
+
+
+Started GET "/admin" for 10.0.2.2 at 2015-03-03 22:35:24 +0000
+
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (30.5ms)
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+Processing by Admin::UsersController#index as HTML
+  Rendered admin/users/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_footer.html.erb (2.6ms)
+Completed 200 OK in 168ms (Views: 166.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:26 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:35:27 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRoleToUsers (20150303223644)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (3.1ms)[0m  [1mALTER TABLE "users" ADD "admin" boolean[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150303223644"]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/movies/new" for 10.0.2.2 at 2015-03-03 22:39:36 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#new as HTML
+  Rendered movies/_form.html.erb (83.7ms)
+  Rendered movies/new.html.erb within layouts/application (117.5ms)
+  [1m[35mUser Load (8.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (70.6ms)
+Completed 200 OK in 654ms (Views: 565.6ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:37 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:37 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:37 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:37 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:39:38 +0000
+
+
+Started POST "/movies" for 10.0.2.2 at 2015-03-03 22:40:29 +0000
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cWpG55MWSoX/19Wf1dHYUWJjz/9z1IuLdO00z1Tfnxs=", "movie"=>{"title"=>"Finding Nemo", "director"=>"Director", "release_date"=>"2500-02-03", "runtime_in_minutes"=>"23", "poster_image_url"=>"", "description"=>"Description", "remote_poster_img_url"=>"http://assets.fontsinuse.com/static/use-media-items/17/16315/full-1028x1500/52b02a86/Finding%20Nemo%20(2003)%202.jpeg?resolution=0"}, "commit"=>"Submit"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "movies" ("created_at", "description", "director", "poster_image_url", "poster_img", "release_date", "runtime_in_minutes", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Tue, 03 Mar 2015 22:40:30 UTC +00:00], ["description", "Description"], ["director", "Director"], ["poster_image_url", ""], ["poster_img", "Finding_20Nemo_20_2003__202.jpeg"], ["release_date", Wed, 03 Feb 2500 00:00:00 UTC +00:00], ["runtime_in_minutes", 23], ["title", "Finding Nemo"], ["updated_at", Tue, 03 Mar 2015 22:40:30 UTC +00:00]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/movies
+Completed 302 Found in 469ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/movies" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (1.5ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_footer.html.erb (3.7ms)
+Completed 200 OK in 168ms (Views: 164.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:30 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:40:31 +0000
+
+
+Started GET "/movies/1" for 10.0.2.2 at 2015-03-03 22:40:34 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (1.4ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "1"]]
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. (called from _app_views_movies_show_html_erb__402549637_99051180 at /vagrant/wk5/day1/rotten_mangoes/app/views/movies/show.html.erb:5)
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReview Load (2.0ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+  Rendered movies/show.html.erb within layouts/application (92.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 264ms (Views: 256.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2015-03-03 22:43:50 +0000
+
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.3/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (28.8ms)
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:43:51 +0000
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered admin/users/index.html.erb within layouts/application (22.0ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (2.8ms)
+Completed 200 OK in 216ms (Views: 178.9ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:52 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:43:53 +0000
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered admin/users/index.html.erb within layouts/application (2.8ms)
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (3.7ms)
+Completed 200 OK in 166ms (Views: 162.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:04 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:05 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:05 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:05 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:05 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:44:05 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddRoleToUsers (20150303223644)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime, "firstname" varchar(255), "lastname" varchar(255), "admin" boolean) 
+  [1m[36m (2.3ms)[0m  [1mSELECT * FROM "users"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "ausers" ("id","email","password_digest","created_at","updated_at","firstname","lastname","admin") VALUES (1, 'derek@zoolander.com', '$2a$10$rQpXy6oVoha/xa6cqIEwpO4dNAnoOzAvFd7mFpXh00KudjwrrjXpS', '2015-03-03 22:34:34.155723', '2015-03-03 22:34:34.155723', 'Derek', 'Zoolander', NULL)
+  [1m[36m (3.2ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime, "firstname" varchar(255), "lastname" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "users" ("id","email","password_digest","created_at","updated_at","firstname","lastname") VALUES (1, 'derek@zoolander.com', '$2a$10$rQpXy6oVoha/xa6cqIEwpO4dNAnoOzAvFd7mFpXh00KudjwrrjXpS', '2015-03-03 22:34:34.155723', '2015-03-03 22:34:34.155723', 'Derek', 'Zoolander')
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "ausers"[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20150303223644'
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRoleToUsers (20150303223644)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (3.3ms)[0m  [1mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150303223644"]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/admin/users" for 10.0.2.2 at 2015-03-03 22:56:28 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::UsersController#index as HTML
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/movies
+Filter chain halted as :admin? rendered or redirected
+Completed 302 Found in 45ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/movies" for 10.0.2.2 at 2015-03-03 22:56:28 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (1.4ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (24.5ms)
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered layouts/_footer.html.erb (2.7ms)
+Completed 200 OK in 217ms (Views: 174.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/admin/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/reviews.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/movies.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/sessions.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/admin/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/movies.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/reviews.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:29 +0000
+
+
+Started GET "/assets/sessions.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:30 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:30 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-03-03 22:56:30 +0000
