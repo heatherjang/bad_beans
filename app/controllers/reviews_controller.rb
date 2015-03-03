@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   
-  before_filter :load_movie
+  before_filter :load_movie, :restrict_access
 
   def new
     @review = @movie.reviews.build
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 
 
   protected
-  
+
   def load_movie
     @movie = Movie.find(params[:movie_id])
   end
