@@ -35,6 +35,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Carrierwave to upload image files
+gem 'carrierwave'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
