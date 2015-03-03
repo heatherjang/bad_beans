@@ -2,7 +2,7 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews
 
-  validates :title, :director, :description, :poster_image_url, :release_date,
+  validates :title, :director, :description, :release_date,
     presence: true
 
   validates :runtime_in_minutes,

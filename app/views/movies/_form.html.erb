@@ -39,10 +39,16 @@
   </div>
   <div>
     <%= f.label "upload_movie_poster" %><br/>
-    <%= f.file_field :poster_img %>
+    <%= f.file_field "poster_img" %>
   </div>
   <div>
+    <%= f.label "remote_poster_img_url", "or image URL" %><br/>
+    <%= f.text_field "remote_poster_img_url" %>
+  </div>
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+
+
+
 
