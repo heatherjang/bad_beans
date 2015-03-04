@@ -41,6 +41,8 @@ gem 'carrierwave'
 gem 'rmagick'
 
 gem 'kaminari'
+
+gem 'bootstrap-sass'
 # Use unicorn as the app server
 # gem 'unicorn'
 
