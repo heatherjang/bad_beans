@@ -1,12 +1,30 @@
 <h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
-<% @movies.each do |movie| %>
-  <%= image_tag movie.poster_img_url(:thumb).to_s %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
-  <h4>Dir: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description%></p>
 
-<hr>
+<%= link_to "Submit a movie!", new_movie_path %><br/>
+
+<h2>Search for a movie</h2>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field_tag(:title) %><br/>
+  <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %><br/>
+  <%= submit_tag("Search") %>
 <% end %>
+
+<% if @movies.count > 0 %>
+  <% @movies.each do |movie| %>
+    <%= image_tag movie.poster_img_url(:thumb).to_s %>
+    <h2><%= link_to movie.title, movie_path(movie) %></h2>
+    <h3><%= movie.release_date %></h3>
+    <h4>Dir: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+    <p><%= movie.description%></p>
+  <% end %>
+<% else %>
+  <h4> No movies matched your search!</h4>
+<% end %>
+
+
+
+ 
+<hr>
