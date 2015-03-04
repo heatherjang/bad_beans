@@ -30,7 +30,7 @@
     <%= f.label "password" %><br>
     <%= f.password_field "password_confirmation" %>
   </div>
-  <% if current_user.admin? %>
+  <% if current_user && current_user.admin? %>
     <div>
       <%= f.label "admin", "Set as Admin" %><br>
       <%= f.check_box "admin" %>

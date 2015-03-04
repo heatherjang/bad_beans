@@ -12,4 +12,9 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def become
+    return unless current_user.admin?
+    
+  end
+
 end
