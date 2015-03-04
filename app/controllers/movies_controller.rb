@@ -3,6 +3,9 @@ class MoviesController < ApplicationController
     if params
       runtime_range = params[:runtime_in_minutes]
       case runtime_range
+      when ''
+        min = 0
+        max = 1000
       when '1'
         min = 0
         max = 89
