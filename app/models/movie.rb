@@ -2,6 +2,7 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews
 
+# Validations
   validates :title, :director, :description, :release_date,
     presence: true
 
@@ -10,6 +11,12 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
+# Scope for search form
+  scope :title_search, -> (title) { where 'title LIKE ?', "%#{title}%" }
+  scope :director_search, -> (director) { where 'director LIKE ?', "%#{director}%"}
+  scope :runtime_search, -> (min, max) { where 'runtime_in_minutes BETWEEN ? AND ?', min, max }
+
+# Carrier wave image uploader
   mount_uploader :poster_img, PosterImageUploader
 
   def review_average
