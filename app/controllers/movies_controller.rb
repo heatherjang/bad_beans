@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   def index
+    @movie = Movie.new
     if params[:query] || params[:runtime_in_minutes]
 
       min = params[:runtime_in_minutes].split('_').first
@@ -17,6 +18,8 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    redirect_to movies_path
+
   end
 
   def edit
