@@ -15,7 +15,9 @@ class MoviesController < ApplicationController
           min = 0
           max = 1000
         end
-      @movies = Movie.title_search(params[:title]).director_search(params[:director]).runtime_search(min, max)
+      @movies = Movie.title_or_director_search(params[:query]).runtime_search(min, max)
+
+      # @movies = Movie.title_search(params[:title]).director_search(params[:director]).runtime_search(min, max)
     else 
       @movies = Movie.all
     end

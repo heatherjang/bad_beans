@@ -5,25 +5,14 @@
 <h2>Search for a movie</h2>
 
 <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %><br/>
-  <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag(:director) %><br/>
+  <%= label_tag(:query, "Search") %>
+  <%= text_field_tag(:query) %><br/>
   <%= label_tag(:runtime_in_minutes, "Runtime:") %>
   <%= select_tag(:runtime_in_minutes, options_for_select([["Select range"], ['Under 90 minutes', 1],['Between 91-120 minutes', 2], ['Over 120 minutes', 3]])) %><br/>
 
   <%= submit_tag("Search") %>
 <% end %>
 
-<% @movies.each do |movie| %>
-  <%= image_tag movie.poster_img_url(:thumb).to_s %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
-  <h4>Dir: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description%></p>
-<% end %>
-
-
-
+<%= render 'movies/movie' %>
  
 <hr>
