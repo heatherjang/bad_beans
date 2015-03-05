@@ -1,23 +1,11 @@
 class MoviesController < ApplicationController
   def index
-    if params[:title] || params[:director] || params[:runtime_in_minutes]
-        case params[:runtime_in_minutes]
-        when '1'
-          min = 0
-          max = 89
-        when '2'
-          min = 90
-          max = 119
-        when '3'
-          min = 120
-          max = 1000
-        else
-          min = 0
-          max = 1000
-        end
+    if params[:query] || params[:runtime_in_minutes]
+
+      min = params[:runtime_in_minutes].split('_').first
+      max = params[:runtime_in_minutes].split('_').last
       @movies = Movie.title_or_director_search(params[:query]).runtime_search(min, max)
 
-      # @movies = Movie.title_search(params[:title]).director_search(params[:director]).runtime_search(min, max)
     else 
       @movies = Movie.all
     end
