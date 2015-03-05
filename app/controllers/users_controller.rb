@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if current_user && @user.save
+      redirect_to admin_users_path, notice: "#{@user.firstname} #{@user.lastname} has been added."
+    elsif !current_user && @user.save
       session[:user_id] = @user.id
       redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
     else

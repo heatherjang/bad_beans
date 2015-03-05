@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    if current_user.admin == false
+    if current_user.admin.blank?
       flash[:alert] = "You must be an admin to see this page."
       redirect_to movies_path
     end
