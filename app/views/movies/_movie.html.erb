@@ -1,11 +1,23 @@
 <% @movies.each do |movie| %>
   <div class="col-md-3 movie_display_col">
-    <div class="movie_display">
+    <div class="movie_container">
+      <div class= "poster_img_bg" style="background-image: url(<%= image_path(movie.poster_img_url)%>)">
+
+<!--       <div class="poster_img_container">
         <%= image_tag movie.poster_img_url.to_s, class: "poster_img" %>
+      </div> -->
+        <div class="col-md-12 movie_details_container">
+          <div class= "movie_details">
+          <h4 class="movie_title"></h4>
+          </div>
+        </div>
+      </div>
+
+<!-- 
       <h2><%= link_to movie.title, movie_path(movie) %></h2>
       <h3><%= movie.release_date %></h3>
       <h4>Dir: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p><%= movie.description%></p>
+      <p><%= movie.description%></p> -->
     </div>  
   </div>
 <% end %>
