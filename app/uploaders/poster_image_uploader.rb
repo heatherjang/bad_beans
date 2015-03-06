@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 class PosterImageUploader < CarrierWave::Uploader::Base
+    def extension_white_list
+      %w(jpg jpeg gif png)
+    end
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -32,9 +35,9 @@ class PosterImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_limit => [100, 100]
-  end
+  # version :thumb do
+  #   process :resize_to_fill => [100, 100]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
