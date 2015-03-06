@@ -10,7 +10,7 @@
         </div>
       </div>
       <!-- Log in or Submit movie -->
-      <div class="row" style="background-color: red">
+      <div class="row">
         <div class="col-md-12">
           <% if current_user %>
             <h1> Hello <%= current_user.firstname %> </h1>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <!-- Right column; Display movies -->
-    <div class="col-md-8" style="background-color: blue">
+    <div class="col-md-8">
       <%= render 'movies/movie' %>
     </div>
 
