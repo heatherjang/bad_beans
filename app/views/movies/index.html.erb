@@ -4,25 +4,28 @@
     <div class="col-md-4">
       <!-- Search form -->
       <div class="row" style="background-color: green">
-        <h2>Search for a movie</h2>
+        <div class="col-md-12">
+          <h2>Search for a movie</h2>
           <%= render 'movies/search' %>
+        </div>
       </div>
-      <!-- Log in form -->
-      <div class="row">
-        <% if current_user %>
-          <h1> Hello <%= current_user.firstname %> </h1>
-          <h2> Submit a movie </h2>
-          <%= render 'movies/form' %>
-        <% else %>
-        <%= render 'sessions/login' %>
-        <% end %>
+      <!-- Log in or Submit movie -->
+      <div class="row" style="background-color: red">
+        <div class="col-md-12">
+          <% if current_user %>
+            <h1> Hello <%= current_user.firstname %> </h1>
+            <h2> Submit a movie </h2>
+            <%= render 'movies/form' %>
+          <% else %>
+            <%= render 'sessions/login' %>
+          <% end %>
+        </div>
       </div>
     </div>
-
+    <div class="col-md-8" style="background-color: blue; display: inline-block">
+      <%= render 'movies/movie' %>
+    </div>
   <!-- Right column; Display movies -->
-    <div class="col-md-8">
-    <%= render 'movies/movie' %>
-    </div>
   </div>
 </div> 
 
