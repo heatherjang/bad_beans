@@ -2,10 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 $font: Helvetica;
 
 
+.testing {
+  background-color: blue
+}
 
 .movie_display_col {
   padding-left: 5px;
@@ -82,4 +84,12 @@ $font: Helvetica;
 
 .float_right{
   float: right;
+}
+
+.form_label {
+  color: white
+}
+
+.index_bottom_right {
+  background: black;
 }

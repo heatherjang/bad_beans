@@ -1,4 +1,4 @@
-<%= form_for @movie, html: {class: 'movies'} do |f| %>
+<%= form_for(@movie, html: {class: 'form-horizontal'}) do |f| %>
 
 <!-- Check for submission errors -->
   <% if @movie.errors.any? %>
@@ -13,38 +13,39 @@
   <% end %>
 
 <!-- Form -->
-  <div>
-    <%= f.label "title" %><br/>
-    <%= f.text_field "title" %>
+  <div class="form-group">
+    <%= f.label "title", {class: 'col-sm-2 form_label'}%>
+    <%= f.text_field "title", {class: 'col-sm-8 form_input'}%>
   </div>
-  <div>
-    <%= f.label "director" %><br/>
-    <%= f.text_field "director" %>
+  <div class="form-group">
+    <%= f.label "director", {class: 'col-sm-2 form_label'} %>
+    <%= f.text_field "director", {class: 'col-sm-8 form_input'} %>
   </div>
-  <div>
-    <%= f.label "release_date" %><br/>
-    <%= f.date_field "release_date" %>
+  <div class="form-group">
+    <%= f.label "release_date", {class: 'col-sm-2 form_label'} %>
+    <%= f.date_field "release_date", {class: 'col-sm-8 form_input'} %>
   </div>
-  <div>
-    <%= f.label "runtime_in_minutes" %><br/>
-    <%= f.number_field "runtime_in_minutes" %>
+  <div class="form-group">
+    <%= f.label "runtime_in_minutes", {class: 'col-sm-2 form_label'} %>
+    <%= f.number_field "runtime_in_minutes", {class: 'col-sm-8 form_input'} %>
   </div>
-  <div>
-    <%= f.label "description" %><br/>
-    <%= f.text_area "description" %>
+  <div class="form-group">
+    <%= f.label "description", {class: 'col-sm-2 form_label'} %>
+    <%= f.text_area "description", {class: 'col-sm-8 form_input'} %>
   </div>
-  <div>
-    <%= f.label "upload_movie_poster" %><br/>
-    <%= f.file_field "poster_img" %>
+  <div class="form-group">
+    <%= f.label "upload_movie_poster", {class: 'col-sm-2 form_label'} %>
+    <%= f.file_field "poster_img", {class: 'col-sm-8 form_input'} %>
   </div>
-  <div>
-    <%= f.label "remote_poster_img_url", "or image URL" %><br/>
-    <%= f.text_field "remote_poster_img_url" %>
+  <div class="form-group">
+    <%= f.label "remote_poster_img_url", "or image URL", {class: 'col-sm-2 form_label'} %>
+    <%= f.text_field "remote_poster_img_url", {class: 'col-sm-8 form_input'} %>
   </div>
   <div>
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+
 
 
 
