@@ -5,7 +5,17 @@
 
         <div class="col-md-12 movie_details_container">
           <div class= "movie_details">
-          <h4 class="movie_title"><%= movie.title %></h4>
+            <div class= "col-md-9 movie_details_col">
+              <h4 class="movie_title"><%= movie.title %></h4>
+            </div>
+            <div class="col-md-3 movie_details_col float_right">
+              <% if movie.reviews.any? %>
+                <h4 class="movie_review"> <%= movie.review_average %>/10</h4>
+              <% else %>
+                <h4 class="movie_review"> No reviews </h4>
+              <% end %>
+            </div>
+
           </div>
         </div>
 
