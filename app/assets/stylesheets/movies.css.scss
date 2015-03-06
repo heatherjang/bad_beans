@@ -20,7 +20,7 @@ $font: Helvetica;
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100%;
-  height: 350px;
+  height: 300px;
 }
 
 .poster_img_bg {
@@ -28,6 +28,32 @@ $font: Helvetica;
   height: 100%;
   background-position: center;
   background-size: cover;
+  opacity: 0.8;
+  display: flex;
+  transition: all 0.15s ease-in-out;
+}
+
+.poster_img_bg:hover {
+  opacity: 1;
+}
+
+.movie_details_container {
+  background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 14%;
+  align-self: flex-end;
+  display: flex;
+}
+
+.movie_details {
+  font-family: $font;
+  align-self: auto;
+}
+
+.movie_title {
+  font-size: 0.9em;
+  font-weight: 900;
+  color: white;
 }
 
 
@@ -41,17 +67,5 @@ $font: Helvetica;
   width: 100%;
 }
 
-.movie_details_container {
-  background-color: yellow;
-  width: 100%;
-  height: 12%;
-}
 
-.movie_details {
-  font-family: $font;
-}
 
-.movie_title {
-  font-size: 0.8em;
-  font-weight: 900;
-}
