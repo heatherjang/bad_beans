@@ -1,21 +1,21 @@
 <div class="container-fluid">
   <div class="row">
   <!-- Left column; Search and login-->
-    <div class="col-md-4">
+    <div class="col-md-4" style="height: 100vh">
       <!-- Search form -->
-      <div class="row" style="background-color: green">
-        <div class="col-md-12">
+      <div class="row" style="height: 50vh">
+        <div class="col-md-12 left_column index_top_right">
           <h2>Search for a movie</h2>
           <%= render 'movies/search' %>
         </div>
       </div>
       <!-- Log in or Submit movie -->
-      <div class="row">
-        <div class="col-md-12 index_bottom_right">
+      <div class="row" style="height: 50vh">
+        <div class="col-md-12 left_column index_bottom_right">
           <% if current_user %>
             <h1> Hello <%= current_user.firstname %> </h1>
             <h2> Submit a movie </h2>
-            <%= render 'movies/form' %>
+            <%= link_to "Submit a movie", new_movie_path %>
           <% else %>
             <%= render 'sessions/login' %>
           <% end %>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <!-- Right column; Display movies -->
-    <div class="col-md-8">
+    <div class="col-md-8" style="background: white">
       <%= render 'movies/movie' %>
     </div>
 

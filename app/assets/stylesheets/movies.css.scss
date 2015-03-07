@@ -87,9 +87,32 @@ $font: Helvetica;
 }
 
 .form_label {
-  color: white
+  color: white;
+  font-size: 14px;
+}
+
+.index_top_right {
+  height: 100%;
+  background: gray;
+  position: fixed;
+  
 }
 
 .index_bottom_right {
+  height: 100%;
   background: black;
+  position: fixed;
 }
+
+.left_column {
+  padding-left: 40px;
+}
+
+.form_input {
+  border-radius: 5px;
+  background: transparent;
+  font-size: 14px;
+  color: white;
+}
+
+
