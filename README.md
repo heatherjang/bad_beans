@@ -1,5 +1,5 @@
 #Bad Beans
-<h4>UNDER CONSTRUCTION</h4>
+<h4>**UNDER CONSTRUCTION**</h4>
 The lesser known cousin of Rotten Tomatoes--Bad Beans is a film review app where users can list and review their favourite movies.
 <ul>
 <li>Poster images can be uploaded via carrierwave gem</li>
